@@ -3,8 +3,14 @@ mongoose.connect('mongodb://localhost/fetcher');
 
 let repoSchema = mongoose.Schema({
     // TODO: your schema here!
-    user: '',
-    topRepo: '',
+    id: Number,
+    name: String,
+    full_name: String,
+    owner: {
+        repos_url: String,
+    },
+    forks_count: Number,
+
     //Potential Reqs
     //Many users to many repos
 });
