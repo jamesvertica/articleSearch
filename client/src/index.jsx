@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import Search from './components/Search.jsx';
 import RepoList from './components/RepoList.jsx';
-// import TOKEN from 'config.js';
+import axios from 'axios';
 
 class App extends React.Component {
   constructor(props) {
@@ -16,7 +16,12 @@ class App extends React.Component {
 
   search (term) {
     console.log(`${term} was searched`);
-    // TODO
+
+    axios.post('/repos', {term: term})
+    .then(function(response){
+      res.body.name()   
+    }); 
+    //axios post term (the username) to server in JSON object
   }
 
   render () {
