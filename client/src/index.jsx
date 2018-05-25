@@ -19,10 +19,12 @@ class App extends React.Component {
 
     axios.post('/repos', {term: term})
     .then(function(response){
-      res.body.name()   
-    }); 
-    //axios post term (the username) to server in JSON object
-  }
+      res.body.username()   
+    })
+    .then(axios.get('/repos')).then(resolved => {
+      console.log(resolved) 
+      this.setState({repos: resolved})});
+  };
 
   render () {
     return (<div>

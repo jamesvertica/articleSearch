@@ -2,16 +2,16 @@ const axios = require('axios');
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/fetcher');
 
-let repoSchema = mongoose.Schema({
+const repoSchema = mongoose.Schema({
     id: Number,
     repo_url: String,
     name: String,
     forks_count: Number
 });
 
-let Repo = mongoose.model('Repo', repoSchema);
+const Repo = mongoose.model('Repo', repoSchema);
 
-let save = (repo) => {
+const save = (repo) => {
 
     Repo.create({
             id: repo.id,
@@ -27,4 +27,9 @@ let save = (repo) => {
         });
 };
 
+const twentyFive = function(cb) {
+    Repo.find().sort({ 'forkCount': 1 }).limit(25).then(results => cb(results));
+};
+
+module.exports.twentyFive = twentyFive;
 module.exports.save = save;
