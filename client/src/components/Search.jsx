@@ -1,4 +1,6 @@
 import React from 'react';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 
 class Search extends React.Component {
   constructor(props) {
@@ -21,8 +23,8 @@ class Search extends React.Component {
   render() {
     return (<div>
       <h4>Add more articles!</h4>
-      Enter a topic: <input value={this.state.topic} onChange={this.onChange.bind(this)}/>       
-      <button onClick={this.search.bind(this)}> Archive Articles </button>
+      Enter a topic: <TextField value={this.state.topic} onChange={this.onChange.bind(this)}/>       
+      <Button variant="raised" color="primary" onClick={this.search.bind(this)}> Archive Articles </Button>
     </div>) 
   }
 }
