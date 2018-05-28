@@ -3,21 +3,20 @@ const config = require('../config.js');
 const save = require('../database/index.js')
 const axios = require('axios');
 
-let getReposByUsername = (username, callback) => {
-    // TODO - Use the request module to request repos for a specific
-    // user from the github API
-    // The options object has been provided to help you out, 
-    // but you'll have to fill in the URL
-    axios.get(`https://api.github.com/users/${username}/repos`, {
-            headers: {
-                'User-Agent': 'request',
-                'Authorization': `token ${config.TOKEN}`
-            }
-        }).then(data => {
-            data.data.map(repo => save.save(repo))
+let getArticlesByTopic = (topic, callback) => {
+request.get({
+  url: "https://api.nytimes.com/svc/search/v2/articlesearch.json",
+  qs: {
+    'api-key': "da39c15d7cfe4590bd649545b367b09f",
+    'q': topic,
+    'sort': "newest",
+    'hl': "true"
+  },
+}).then(data => {
+            data.data.map(article => save.save(article))
         })
         .then(() => callback)
-        .catch(err => console.log(err));
-}
+        .catch(err => console.log(err));;
+};
 
-module.exports.getReposByUsername = getReposByUsername;
+module.exports.getArticlesByTopic = getArticlesByTopic;

@@ -1,35 +1,34 @@
 const axios = require('axios');
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/fetcher');
+mongoose.connect('mongodb://localhost/3000');
 
-const repoSchema = mongoose.Schema({
-    id: Number,
-    repo_url: String,
-    name: String,
-    forks_count: Number
+const articleSchema = mongoose.Schema({
+    print_headline: String,
+    web_url: String,
+    source: String,
+    pub_date: Number,
+    word_count: Number,
+    uri: String,
+    section_name: String
 });
 
-const Repo = mongoose.model('Repo', repoSchema);
+const Article = mongoose.model('Article', articleSchema);
 
-const save = (repo) => {
+const save = (article) => {
 
-    Repo.create({
-            id: repo.id,
-            name: repo.name,
-            forkCount: repo.forks_count,
-            url: repo.html_url
-        },
+    Article.create({
+    headline: print_headline,
+    ur: article.web_url,
+    source: article.source,
+    published: article.pub_date,
+    wordCount: article.word_count,
+    uri: article.uri,
+    section: article.section_name,
+    });
+}
+// const twentyFive = function(cb) {
+//     Article.find().sort({ 'forkCount': 1 }).limit(25).then(results => cb(results));
+// };
 
-        function(err) {
-            if (err) {
-                console.log('error')
-            }
-        });
-};
-
-const twentyFive = function(cb) {
-    Repo.find().sort({ 'forkCount': 1 }).limit(25).then(results => cb(results));
-};
-
-module.exports.twentyFive = twentyFive;
+// module.exports.twentyFive = twentyFive;
 module.exports.save = save;

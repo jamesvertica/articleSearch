@@ -2,34 +2,33 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import Search from './components/Search.jsx';
-import RepoList from './components/RepoList.jsx';
+import ArticleList from './components/RepoList.jsx';
 import axios from 'axios';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
-      repos: []
+      articles: []
     }
-
   }
 
-  search (term) {
-    console.log(`${term} was searched`);
+  search (topic) {
+    console.log(`${topic} was searched`);
 
-    axios.post('/repos', {term: term})
+    axios.post('/articles', {topic: topic})
     .then(function(response){
-      res.body.username()   
+      response.body.topic   
     })
-    .then(axios.get('/repos')).then(resolved => {
+    .then(axios.get('/articles')).then(resolved => {
       console.log(resolved) 
-      this.setState({repos: resolved})});
+      this.setState({articles: resolved})});
   };
 
   render () {
     return (<div>
-      <h1>Github Fetcher</h1>
-      <RepoList repos={this.state.repos}/>
+      <h1>Article Fetcher</h1>
+      <ArticleList articles={this.state.articles}/>
       <Search onSearch={this.search.bind(this)}/>
     </div>)
   }
