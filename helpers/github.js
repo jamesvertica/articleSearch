@@ -9,7 +9,7 @@ request({
   url: "https://api.nytimes.com/svc/search/v2/articlesearch.json",
   qs: {
     'api-key': "da39c15d7cfe4590bd649545b367b09f",
-    'q': "baseball",
+    'q': topic,
     'sort': "newest",
     'hl': "true"
   },

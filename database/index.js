@@ -38,7 +38,7 @@ const save = (article) => {
     });
 }
 const twentyFive = function (cb) {
-    Article.find().limit(25).then(results => cb(results));
+    Article.find().sort({_id:-1}).limit(10).then(results => cb(results));
 };
 
 module.exports.twentyFive = twentyFive;
