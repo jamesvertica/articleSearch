@@ -11,18 +11,22 @@ class App extends React.Component {
     this.state = { 
       articles: []
     }
+    axios.get('/articles',).then((resolved) => {
+      // console.log(resolved.data)
+      this.setState({articles: resolved.data});
+    })
   }
 
   search (topic) {
     console.log(`${topic} was searched`);
 
     axios.post('/articles', {topic: topic})
-    .then(function(response){
-      response.body.topic   
+    .then(response => {
+      // console.log(response)
     })
-    .then(axios.get('/articles')).then(resolved => {
-      console.log(resolved) 
-      this.setState({articles: resolved})});
+    .then(axios.get('/articles').then(resolved => {
+      // console.log(resolved) 
+      this.setState({articles: resolved.data}, () => console.log(this.state.articles))}));
   };
 
   render () {

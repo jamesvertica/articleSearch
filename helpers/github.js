@@ -4,19 +4,20 @@ const save = require('../database/index.js')
 const axios = require('axios');
 
 let getArticlesByTopic = (topic, callback) => {
-request.get({
+request({
+  method: 'GET',
   url: "https://api.nytimes.com/svc/search/v2/articlesearch.json",
   qs: {
     'api-key': "da39c15d7cfe4590bd649545b367b09f",
-    'q': topic,
+    'q': "baseball",
     'sort': "newest",
     'hl': "true"
   },
-}).then(data => {
-            data.data.map(article => save.save(article))
-        })
-        .then(() => callback)
-        .catch(err => console.log(err));;
-};
+}, function(err, response, body) {
+  body = JSON.parse(body);
+  callback(body.response)
+//   console.log(body.response);
+})
+}
 
 module.exports.getArticlesByTopic = getArticlesByTopic;

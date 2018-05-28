@@ -14,7 +14,8 @@ app.use(function(req, res, next) {
 
 app.post('/articles', function(req, res) {
     const callback = function(resolved) {
-        res.send('complete')
+        resolved.docs.map(item => db.save(item));
+        res.send(resolved);
     }
     getReposByUserName.getArticlesByTopic(req.body.topic, callback)
 });
@@ -23,7 +24,7 @@ app.get('/articles', function(req, res) {
     const cb = function(results) {
         res.send(results);
     }
-    // db.twentyFive(cb);
+    db.twentyFive(cb);
 });
 
 let port = 3000;
