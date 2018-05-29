@@ -14,7 +14,7 @@ const ArticleItem = (props) => {
     console.log(props.article, 'AH')
 
     return (
-        <Paper>
+        <Card>
             <CardHeader>{props.article.headline} </CardHeader>
             <Typography variant="title">{props.article.snippet}</Typography>
             <Typography variant="caption">{props.article.published}</Typography>
@@ -22,7 +22,7 @@ const ArticleItem = (props) => {
            <Button size="small" >{props.article.wordCount}</Button>
                 <Button size="small">{props.article.uri}></Button>
             </CardActions>
-        </Paper>
+        </Card>
     )
 }
 export default ArticleItem;
