@@ -36,7 +36,6 @@ class App extends React.Component {
   render() {
     return (<div>
       <img src="https://remotelist.io/static/company/2110.gif" />
-      <h1>Article Fetcher</h1>
       <ArticleList articles={this.state.articles} />
       <Search onSearch={this.search.bind(this)} />
     </div>)

@@ -1,11 +1,13 @@
 import React from 'react';
+import ArticleItem from './listItem.jsx'
 
-const ArticleList = (props) => (
-  <div>
-    <h4> Article List Component </h4>
-    There are {props.articles.length} articles.
-    {props.articles[0] && <h3> {props.articles[0].headline} </h3>}
-  </div>
-)
-
+const ArticleList = (props) => {
+  console.log(props.articles)
+  return (
+    <div>
+      <h4> Top 10 for </h4>
+      {props.articles.map(article => <ArticleItem article={article} /> )}
+    </div>
+  )
+}
 export default ArticleList;

@@ -1,6 +1,6 @@
 const axios = require('axios');
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/help');
+mongoose.connect('mongodb://206.189.170.211:27017/help');
 
 const db = mongoose.connection;
 
@@ -17,7 +17,8 @@ const articleSchema = mongoose.Schema({
     published: String,
     wordCount: Number,
     uri: String,
-    section: String
+    section: String,
+    snippet: String,
 });
 
 const Article = mongoose.model('Article', articleSchema);
@@ -32,13 +33,14 @@ const save = (article) => {
         wordCount: article.word_count,
         uri: article.uri,
         section: article.section_name,
+        snippet: article.snippet,
     }, (err, stuff) => {
-        if(err) console.log(err)
+        if (err) console.log(err)
         else console.log('not err')
     });
 }
-const twentyFive = function (cb) {
-    Article.find().sort({_id:-1}).limit(10).then(results => cb(results));
+const twentyFive = function(cb) {
+    Article.find().sort({ _id: -1 }).limit(10).then(results => cb(results));
 };
 
 module.exports.twentyFive = twentyFive;
