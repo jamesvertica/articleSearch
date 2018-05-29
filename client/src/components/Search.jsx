@@ -1,12 +1,6 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardHeader from '@material-ui/core/CardHeader';
 import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-import Paper from '@material-ui/core/Paper'
+import TextField from '@material-ui/core/TextField';
 
 class Search extends React.Component {
   constructor(props) {
@@ -28,9 +22,8 @@ class Search extends React.Component {
 
   render() {
     return (<div>
-      <Typography variant="display"> Read Below: </Typography>
       Enter a topic: <TextField value={this.state.topic} onChange={this.onChange.bind(this)}/>       
-      <Button variant="raised" color="primary" onClick={this.search.bind(this)}> Lookup </Button>
+      <Button variant="raised" color="primary" onClick={this.search.bind(this)}> Search NYT </Button>
     </div>) 
   }
 }
