@@ -5,7 +5,7 @@ const ArticleList = (props) => {
   console.log(props.articles)
   return (
     <div>
-      <h4> Top 10 for </h4>
+      <h4> Top 10 Stories </h4>
       {props.articles.map(article => <ArticleItem article={article} /> )}
     </div>
   )
