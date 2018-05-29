@@ -5,19 +5,20 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import Paper from '@material-ui/core/Paper'
 
 const ArticleItem = (props) => {
 
     console.log(props.article, 'AH')
 
     return (
-        <div>
-            <paper>{props.article.headline}</paper>
-            <paper>{props.article.snippet}</paper>
-            <paper>{props.article.published}</paper>
-            <paper>{props.article.wordCount}</paper>
-            <paper>{props.article.uri}</paper>
-        </div>
+        <Card>
+            <CardHeader>{props.article.headline} </CardHeader>
+            <CardContent>{props.article.snippet}</CardContent>
+            <CardContent>{props.article.published}</CardContent>
+            <CardContent>{props.article.wordCount}</CardContent>
+            <CardContent>{props.article.uri}</CardContent>
+        </Card>
     )
 }
 export default ArticleItem;
